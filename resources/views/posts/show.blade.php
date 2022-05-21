@@ -8,3 +8,9 @@ Category: <em>{{ $post->category->name }}</em>
 <br><br>
 
 <a href="/posts">Go Back</a>
+
+<style>
+  a{
+    color: black;
+  }
+</style>

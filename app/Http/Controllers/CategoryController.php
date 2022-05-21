@@ -8,7 +8,7 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Category $category)
     {
         $categories = Category::all();
         return view('categories.index', compact('categories'));
@@ -23,7 +23,7 @@ class CategoryController extends Controller
     {
         return view('categories.createPost', compact('category'));
     }
-    
+
     public function store(Request $request)
     {
         $category = new Category;
@@ -34,11 +34,12 @@ class CategoryController extends Controller
         return redirect()->route('categories');
     }
 
-    public function show(Category $category)
+    public function show(Category $category, $id)
     {
-        $post = Post::all();
-        // dd($post);
-        return view('categories.show', compact('category', 'post'));
+        $category = Category::find($id);
+        $posts = $category->posts;
+        
+        return view('categories.show', compact('category', 'posts'));
     }
 
     public function edit(Category $category)
@@ -55,8 +56,10 @@ class CategoryController extends Controller
         return redirect()->route('categories');
     }
 
-    public function destroy(Category $category)
+    public function destroy($id)
     {
+        $category = Category::find($id);
+
         $category->delete();
 
         return redirect()->route('categories');

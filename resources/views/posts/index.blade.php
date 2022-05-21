@@ -3,7 +3,7 @@
 <hr>
 <br>
 @foreach ($posts as $post)
-Category: <em>{{ $post->category->name }}</em> 
+Category: <em> <a href="{{route('showCategory', $post->category->id)}}"> {{$post->category->name }}</a></em> 
 <h3><a href="{{ route('show', $post->id) }}">{{ $post->title }}</a></h3>
 
 <p>{{ $post->body }}</p>
@@ -14,6 +14,7 @@ Category: <em>{{ $post->category->name }}</em>
 <style>
   a{
     text-decoration: none;
+    color: black;
   }
   a:hover{
     text-decoration: underline;
