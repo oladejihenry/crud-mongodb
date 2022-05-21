@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -15,7 +16,10 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        
+        return view('posts.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     public function store(Request $request)
@@ -23,6 +27,7 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->body = $request->body;
+        $post->category_id = $request->category_id;
 
         $post->save();
 

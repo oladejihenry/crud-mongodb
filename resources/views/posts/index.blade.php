@@ -1,7 +1,9 @@
 <h1>All Posts</h1>
-<a href="{{ route('create') }}">Create</a>
+<a href="{{ route('create') }}">Create</a> | <a href="{{ route('categories') }}">All Categories</a>
 <hr>
+<br>
 @foreach ($posts as $post)
+Category: <em>{{ $post->category->name }}</em> 
 <h3><a href="{{ route('show', $post->id) }}">{{ $post->title }}</a></h3>
 
 <p>{{ $post->body }}</p>

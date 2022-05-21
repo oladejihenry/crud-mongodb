@@ -12,10 +12,12 @@ class Post extends Model
     protected $fillable = [
         'title',
         'body',
+        'category_id',
     ];
 
-    // protected $connection = 'mongodb';
-
-    // protected $primaryKey = 'id';
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     
 }
