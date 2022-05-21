@@ -19,6 +19,11 @@ class CategoryController extends Controller
         return view('categories.create');
     }
 
+    public function createPost(Category $category)
+    {
+        return view('categories.createPost', compact('category'));
+    }
+    
     public function store(Request $request)
     {
         $category = new Category;
@@ -27,6 +32,13 @@ class CategoryController extends Controller
         $category->save();
 
         return redirect()->route('categories');
+    }
+
+    public function show(Category $category)
+    {
+        $post = Post::all();
+        // dd($post);
+        return view('categories.show', compact('category', 'post'));
     }
 
     public function edit(Category $category)

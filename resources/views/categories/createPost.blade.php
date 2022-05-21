@@ -1,11 +1,6 @@
 <form action="{{ route('store') }}" method="POST">
   @csrf
-  <select name="category_id">
-    <option value="">Select Category</option>
-    @foreach ($categories as $category)
-      <option value="{{ $category->id }}">{{ $category->name }}</option>
-    @endforeach
-  </select>
+  <input type="hidden" name="category_id" value="{{ $category->id }}">
   <br><br>
   <input type="text" name="title" value="">
   <br><br>

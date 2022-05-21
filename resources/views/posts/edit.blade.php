@@ -6,3 +6,7 @@
   <br><br>
   <input type="submit" value="Submit">
 </form>
+
+<br><br>
+
+<a href="/posts">Go Back</a>
